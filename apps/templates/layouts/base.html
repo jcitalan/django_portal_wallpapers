@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/assets/images/favicon-32x32.png">
+  <link type="text/css"   href="/static/assets/css/wallpapers.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+  <title>
+    Django Wallpapers | {% block title %}{% endblock %}  
+  </title>
+
+</head>
+<body>
+
+  <main class="content">
+    {% include 'includes/navigation.html' %}
+    {% block content %}{% endblock content %}
+    {% include 'includes/footer.html' %}
+  </main>
+
+</body>
+</html>

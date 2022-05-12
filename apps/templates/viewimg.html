@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} View Wallpaper {% endblock %} 
+
+{% block content %}
+
+<section class="download">
+  <div class="u-wrapper">
+    <div class="container">
+      <div class="download-item">
+        <h1 class="u-h1">
+          {{wp.title}}
+        </h1>
+        <h3 class="u-h3">
+          {{wp.description}}
+        </h3>
+        <h2 class="u-h2">
+          {{wp.price}}
+        </h2>
+        <img src="/media/imgs/download/{{wp.name_photo}}">
+        <a href="/media/imgs/download/{{wp.name_photo}}" download><button class="u-button is-fullWidth">Descargar</button></a>
+      </div>
+      
+    </div>
+  </div>
+  
+</section>
+  
+
+{% endblock content %}

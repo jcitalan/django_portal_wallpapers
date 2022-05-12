@@ -1,0 +1,16 @@
+# Git
+.git
+.gitignore
+
+
+
+# Python
+django_portal_wallpapers/__pycache__/
+django_portal_wallpapers/*/__pycache__/
+django_portal_wallpapers/*/*/__pycache__/
+django_portal_wallpapers/*/*/*/__pycache__/
+.env/
+.venv/
+venv/
+
+django_portal_wallpapers/media/imgs/*

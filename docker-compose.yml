@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13.6
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_PASSWORD=pepito
+    ports:
+      - "5433:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    # networks:
+    #   - postgres
+      
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    restart: always
+    volumes:
+      - static:/code/static
+      - media:/code/media
+      - .:/code
+    depends_on:
+      - db
+    # networks:
+    #   - postgres
+
+  nginx:
+    image: nginx:1.20
+    ports:
+      - 8000:80    
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - static:/code/static
+      - media:/code/media
+    depends_on:
+    - web
+    # networks:
+    #   - postgres
+volumes:
+  .:
+  postgres_data:
+  static:
+  media:
+# networks:
+#   postgres:
+#     driver: bridge

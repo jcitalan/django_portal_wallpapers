@@ -1,0 +1,145 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Buy Wallpaper {% endblock %} 
+
+{% block content %}
+<section class="hero">
+  <div class="u-wrapper">
+    <div class="hero-grid">
+      <div class="hero-imageContainer">
+        <img class="hero-image" src="./static/assets/images/bora_bora.jpg" alt="bora_bora" title="bora bora">
+      </div>
+      <div class="hero-content">
+        <h1 class="u-h1">Una manera simple para adquirir tus wallpapers</h1>
+        <p class="u-p">Multiples wallpapers a tu gusto disponibles para descagar.</p>
+        <div class="hero-buttons">
+          <a href="#buy"><button class="u-button">Comprar Mas</button></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="features">
+  <div class="u-wrapper">
+    <h2 class="u-h2">
+      Goals
+    </h2>
+    <p class="u-p">
+      Viaja más rápido el que viaja solo. Viaja más lejos el que va acompañado
+    </p>
+    <div class="tabs">
+      <input type="radio" value="bookmarking" name="tabs" id="bookmarking" checked>
+      <input type="radio" name="tabs" value="searching" id="searching">
+      <input type="radio" name="tabs" value="sharing" id="sharing">
+      <ul>
+        <li class="tabs-link">
+          <label for="bookmarking">
+            Naturaleza
+          </label>
+        </li>
+        <li class="tabs-link">
+          <label for="searching">
+            Ciudades
+          </label>
+        </li>
+        <li class="tabs-link">
+          <label for="sharing">
+            Edificios
+          </label>
+        </li>
+      </ul>
+      <div class="tabs-grid">
+        <div class="tabs-content" id="tab-bookmarking">
+          <img src="./static/assets/images/lake-atitlan.png" alt="photho_guatemala" title="Guatemala">
+          <div>
+            <h2 class="u-h2">
+             Lago Atitlan|Guatemala
+            </h2>
+            <p class="u-p">
+              Guatemala y su turismo son uno de los focos de atención más interesantes y llamativos de Centroamérica. El país ofrece lugares increíbles, 
+              un ecosistema exuberante, lagos y volcanes únicos en el mundo y una cultura e historia particular.
+            </p>
+            <a href="#buy"><button class="u-button">Comprar mas</button></a>
+          </div>
+        </div>
+        <div class="tabs-content" id="tab-searching">
+          <img src="./static/assets/images/germany-cochem.png" alt="photo_germany" title="Germany">
+          <div>
+            <h2 class="u-h2">
+              Cochem|Germany
+            </h2>
+            <p class="u-p">
+              Cochem es una pequeña ciudad en el estado federado Renania-Palatinado, en el oeste de Alemania
+            </p>
+            <a href="#buy"><button class="u-button">Comprar mas</button></a>
+
+          </div>
+        </div>
+        <div class="tabs-content" id="tab-sharing">
+          <img src="./static/assets/images/eiffel-tower.png" alt="photo_eiffel-tower">
+          <div>
+            <h2 class="u-h2">
+              Torre Eiffel|Paris
+            </h2>
+            <p class="u-p">
+              Cada cinco años la Torre se pinta con 50 toneladas de pintura para evitar la corrosión, 
+              razón por la que ha cambiado de color en numerosas ocasiones. Son los visitantes los que deciden la nueva tonalidad votando en el primer piso como quieren que se pinte. 
+            </p>
+            <a href="#buy"><button class="u-button">Comprar mas</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="download" >
+  <div class="u-wrapper">
+    <h2 class="u-h2" id="buy">
+    Selecciona tu wallpapers favorito
+    </h2>
+    <p class="u-p">
+      Nos dedicamos a la abstaccion de wallpapers por todo internet, selecciona tu wallpaper disponible favorito.
+    </p>
+    <div class="download-grid">
+    {%for data in wp%}
+    {%if data.photo != 'null' and data.photo.url|length >= 1%}
+      <div class="download-item">
+
+        <img src="./media/imgs/preview/{{data.name_photo}}" alt="{{data.title}}" title="{{data.title}}">
+        <h3 class="u-h3">
+          {{data.title}}
+        </h3>
+        <p class="u-p">
+          Precio: {{data.price}}
+        </p>
+        {%if data.status%}
+        <a href="{% url 'viewimg' data.id %}">
+          <button class="u-button is-fullWidth">
+            View
+          </button>
+        </a>
+        {%else%}
+        <h3 class="u-h3">
+          Proximamente
+        </h3>
+        {%endif%}
+      </div>
+    {%endif%}
+    {%endfor%}
+  </div>
+  </div>
+</section>
+
+
+
+<section class="join">
+  <div class="u-wrapper">
+    <small>35,000+ descargas mensuales</small>
+    <h4 class="u-h4">Quieres recibir informacion de nuevos wallpapers</h4>
+    <div class="contact">
+      <input placeholder="Ingresa tu email" type="email" class="contact-input" id="suscribirme">
+      <input type="submit" class="u-button is-red is-fullWidth" value="Suscribirme">
+    </div>
+  </div>
+</section>
+{% endblock content %}
