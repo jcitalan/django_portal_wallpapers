@@ -11,7 +11,7 @@ $ docker-compose up --build
 ```
 
 
-## ✨ Create Django Migrations
+## ✨ Create SuperUser Django
 >open a other new command prompt
 ```bash
 $ # Get the code
